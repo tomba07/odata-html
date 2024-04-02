@@ -1,0 +1,32 @@
+<table class="table-style">
+  <thead>
+    <tr>
+      {{#each headers}}
+        <th class="th-style">{{this}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+      <tr>
+        {{#each this.data}}
+          <td class="td-style border-top">{{this}}</td>
+        {{/each}}
+      </tr>
+      {{#if this.transposed}}
+        <tr>
+          <td colspan="{{../maxColumns}}" class="td-style">
+            {{#each this.transposed}}
+              <div class="div-style">
+                <strong>{{this.label}}:</strong>
+                {{this.value}}
+              </div>
+            {{/each}}
+            <!-- Render General Information HTML here -->
+            {{{generalInformationHtml}}}
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
